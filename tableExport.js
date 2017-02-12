@@ -1407,9 +1407,15 @@
           var $cell = $(cell);
           var htmlData;
 
-          if ($cell[0].hasAttribute("data-tableexport-value"))
-            htmlData = $cell.data("tableexport-value");
-          else {
+         // if ($cell[0].hasAttribute("data-tableexport-value"))
+        //    htmlData = $cell.data("tableexport-value");
+        //  else {
+          if ($cell.data("filter-control") != undefined) {
+              if ($cell.data("filter-control") == "select")
+                  htmlData = $cell[0].innerText;
+              else
+                  htmlData = $cell.html(); 
+            } 
             htmlData = $cell.html();
 
             if (htmlData != '') {
